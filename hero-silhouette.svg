@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" width="100%" height="100%">
+  <defs>
+    <!-- Background atmospheric red glow -->
+    <radialGradient id="heroAtmosphere" cx="50%" cy="45%" r="50%">
+      <stop offset="0%" stop-color="#E62429" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#E62429" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#050505" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Silhouette metal gradient -->
+    <linearGradient id="armorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1c20"/>
+      <stop offset="50%" stop-color="#101013"/>
+      <stop offset="100%" stop-color="#070709"/>
+    </linearGradient>
+
+    <!-- Edge Rim Lighting -->
+    <linearGradient id="redRimLight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF3B30" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#E62429" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FF3B30" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Arc Reactor Core Glow -->
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="25%" stop-color="#FF5252"/>
+      <stop offset="60%" stop-color="#E62429"/>
+      <stop offset="100%" stop-color="#E62429" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glow Filter -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Atmospheric Glow Sphere behind character -->
+  <circle cx="300" cy="380" r="260" fill="url(#heroAtmosphere)" />
+
+  <!-- Hero Body Silhouette Group -->
+  <g class="hero-body" filter="drop-shadow(0 0 18px rgba(230, 36, 41, 0.3))">
+    
+    <!-- Torso and Chest Armor Base -->
+    <path d="M 230 250 L 370 250 L 410 330 L 430 460 L 390 600 L 350 780 L 250 780 L 210 600 L 170 460 L 190 330 Z" 
+          fill="url(#armorGradient)" stroke="url(#redRimLight)" stroke-width="2" />
+
+    <!-- Broad Shoulders & Pauldrons -->
+    <!-- Left Shoulder -->
+    <polygon points="120,310 190,260 230,270 190,360 110,340" fill="#141418" stroke="#E62429" stroke-width="1.5" stroke-opacity="0.6" />
+    <polygon points="80,350 120,310 160,360 130,420 70,380" fill="#0d0d10" stroke="#FF3B30" stroke-width="1.2" stroke-opacity="0.4" />
+    
+    <!-- Right Shoulder -->
+    <polygon points="480,310 410,260 370,270 410,360 490,340" fill="#141418" stroke="#E62429" stroke-width="1.5" stroke-opacity="0.6" />
+    <polygon points="520,350 480,310 440,360 470,420 530,380" fill="#0d0d10" stroke="#FF3B30" stroke-width="1.2" stroke-opacity="0.4" />
+
+    <!-- Trapezius and Neck -->
+    <polygon points="260,230 340,230 360,260 240,260" fill="#0d0d10" stroke="#2A2A2A" stroke-width="1" />
+
+    <!-- Tech Helmet / Cowl -->
+    <path d="M 260 150 C 260 100, 340 100, 340 150 L 355 190 L 340 235 L 300 245 L 260 235 L 245 190 Z" 
+          fill="url(#armorGradient)" stroke="url(#redRimLight)" stroke-width="2" />
+    
+    <!-- Helmet Faceplate Angles -->
+    <polygon points="275,170 325,170 335,205 300,225 265,205" fill="#0c0c0e" stroke="#E62429" stroke-width="1" stroke-opacity="0.5" />
+
+    <!-- Glowing Hero Visor / Eyes -->
+    <polygon points="278,178 293,178 291,185 279,183" fill="#FFFFFF" filter="url(#neonGlow)" />
+    <polygon points="322,178 307,178 309,185 321,183" fill="#FFFFFF" filter="url(#neonGlow)" />
+    <polygon points="275,177 295,177 292,187 277,185" fill="#FF3B30" opacity="0.6" filter="url(#neonGlow)" />
+    <polygon points="325,177 305,177 308,187 323,185" fill="#FF3B30" opacity="0.6" filter="url(#neonGlow)" />
+
+    <!-- Chest Armor Plates -->
+    <!-- Left Pectoral Plate -->
+    <polygon points="235,275 295,275 285,355 210,335 220,295" fill="#18181d" stroke="#2A2A2A" stroke-width="1.5" />
+    <!-- Right Pectoral Plate -->
+    <polygon points="365,275 305,275 315,355 390,335 380,295" fill="#18181d" stroke="#2A2A2A" stroke-width="1.5" />
+
+    <!-- Abdominal Circuit & Plating -->
+    <polygon points="270,390 330,390 325,430 275,430" fill="#131317" stroke="#2A2A2A" stroke-width="1" />
+    <polygon points="265,445 335,445 330,485 270,485" fill="#131317" stroke="#2A2A2A" stroke-width="1" />
+    <polygon points="260,500 340,500 330,545 270,545" fill="#101014" stroke="#2A2A2A" stroke-width="1" />
+
+    <!-- Glowing Tech Circuit Lines -->
+    <path d="M 230 360 L 260 410 L 260 490 L 240 550" fill="none" stroke="#E62429" stroke-width="1.5" stroke-opacity="0.6" />
+    <path d="M 370 360 L 340 410 L 340 490 L 360 550" fill="none" stroke="#E62429" stroke-width="1.5" stroke-opacity="0.6" />
+    <line x1="270" y1="365" x2="230" y2="440" stroke="#FF3B30" stroke-width="1" stroke-opacity="0.4" />
+    <line x1="330" y1="365" x2="370" y2="440" stroke="#FF3B30" stroke-width="1" stroke-opacity="0.4" />
+
+    <!-- Center Arc Reactor / Energy Core (Code Core) -->
+    <!-- Outer Housing -->
+    <polygon points="300,320 330,345 318,380 282,380 270,345" fill="#0a0a0c" stroke="#E62429" stroke-width="2.5" />
+    <!-- Core Ambient Glow -->
+    <circle cx="300" cy="350" r="28" fill="url(#coreGlow)" filter="url(#neonGlow)" />
+    <!-- Core Center Prism -->
+    <polygon points="300,335 315,350 309,365 291,365 285,350" fill="#FFFFFF" />
+    <!-- Code Bracket Accents inside Core (< / >) -->
+    <path d="M 292 346 L 288 350 L 292 354" fill="none" stroke="#E62429" stroke-width="1.5" stroke-linecap="round" />
+    <path d="M 308 346 L 312 350 L 308 354" fill="none" stroke="#E62429" stroke-width="1.5" stroke-linecap="round" />
+
+    <!-- Lower Torso Fade into Darkness -->
+    <rect x="150" y="650" width="300" height="150" fill="url(#heroAtmosphere)" opacity="0.8" />
+  </g>
+
+  <!-- Ambient Floating Energy Embers -->
+  <circle cx="210" cy="220" r="2" fill="#FF3B30" opacity="0.8" filter="url(#neonGlow)" />
+  <circle cx="410" cy="200" r="1.5" fill="#FF3B30" opacity="0.6" filter="url(#neonGlow)" />
+  <circle cx="160" cy="400" r="2" fill="#E62429" opacity="0.5" />
+  <circle cx="440" cy="380" r="2" fill="#FF5252" opacity="0.7" />
+  <circle cx="380" cy="520" r="2.5" fill="#FF3B30" opacity="0.4" />
+</svg>
