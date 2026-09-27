@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Code Assembly — Where Heroes Write Code</title>
+  
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Design System Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar-header">
+    <nav class="navbar" id="navbar">
+      <!-- Left: Logo / Chapter Name -->
+      <a href="#" class="nav-brand">
+        <span class="brand-badge"></span>
+        <span class="brand-text">GFG STUDENT CHAPTER</span>
+      </a>
+
+      <!-- Center & Right: Navigation Menu -->
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">HOME</a></li>
+          <li><a href="#mission" class="nav-link">MISSION</a></li>
+          <li><a href="#timeline" class="nav-link">TIMELINE</a></li>
+          <li><a href="#register" class="nav-link">REGISTER</a></li>
+        </ul>
+
+        <!-- Right: Call To Action Button -->
+        <a href="#register" class="nav-cta">ASSEMBLE &rarr;</a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-controls="navMenu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+       HERO SECTION — THE CODE ASSEMBLY
+       ========================================================================== -->
+  <main>
+    <section class="hero-section" id="home">
+      <!-- Atmospheric Ambient Red Glow -->
+      <div class="hero-atmosphere" aria-hidden="true">
+        <div class="atmosphere-glow atmosphere-glow-primary"></div>
+        <div class="atmosphere-glow atmosphere-glow-secondary"></div>
+      </div>
+
+      <div class="hero-container">
+        <!-- Left Column: Typography & Call To Action -->
+        <div class="hero-content">
+          <!-- Small Event Label / Eyebrow -->
+          <div class="hero-eyebrow">
+            <span class="eyebrow-dot"></span>
+            <span class="eyebrow-text">GEEKSFORGEEKS &bull; STUDENT CHAPTER &bull; BENNETT UNIVERSITY</span>
+          </div>
+
+          <!-- Main Dramatic Heading -->
+          <h1 class="hero-title">
+            <span class="title-line title-white">THE CODE</span>
+            <span class="title-line title-red">ASSEMBLY</span>
+          </h1>
+
+          <!-- Tagline Block -->
+          <div class="hero-tagline-wrapper">
+            <p class="hero-tagline">
+              WHERE HEROES<br>
+              WRITE CODE.
+            </p>
+          </div>
+
+          <!-- Primary CTA Button -->
+          <div class="hero-action">
+            <a href="#register" class="hero-btn">
+              <span class="btn-text">ASSEMBLE NOW</span>
+              <span class="btn-arrow">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Superhero Silhouette & Atmospheric Rim Lighting -->
+        <div class="hero-visual">
+          <div class="hero-glow-halo" aria-hidden="true"></div>
+          
+          <div class="hero-image-wrapper">
+            <!-- Note: You can replace "assets/hero-silhouette.svg" with your custom PNG/image path anytime -->
+            <img 
+              src="assets/hero-silhouette.svg" 
+              alt="The Code Assembly Superhero Silhouette" 
+              class="hero-character-img"
+            />
+          </div>
+
+          <!-- Bottom gradient overlay to blend seamlessly into background -->
+          <div class="hero-gradient-overlay" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <a href="#mission" class="hero-scroll" aria-label="Scroll to explore">
+        <span class="scroll-text">SCROLL</span>
+        <span class="scroll-track">
+          <span class="scroll-bar"></span>
+        </span>
+      </a>
+    </section>
+
+    <!-- ==========================================================================
+         MISSION SECTION — THE MISSION
+         ========================================================================== -->
+    <section class="mission-section" id="mission">
+      <div class="mission-container">
+        
+        <!-- Section Header: Large Editorial Title & Narrative -->
+        <div class="mission-grid reveal">
+          <div class="mission-title-col">
+            <div class="mission-eyebrow">
+              <span class="eyebrow-accent-bar"></span>
+              <span class="eyebrow-caption">CHAPTER BRIEFING</span>
+            </div>
+            <h2 class="mission-heading">THE MISSION</h2>
+          </div>
+
+          <div class="mission-body-col">
+            <p class="mission-lead">
+              The next generation of builders is ready to assemble.
+            </p>
+            <p class="mission-paragraph">
+              Join the GeeksForGeeks Student Chapter at Bennett University for an immersive technology experience where ideas become innovations, challenges become missions, and developers become heroes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Red Accent Divider -->
+        <div class="mission-accent-divider reveal"></div>
+
+        <!-- Three Statistics: Horizontal on Desktop, Vertical on Mobile -->
+        <div class="mission-stats-grid">
+          <!-- Stat 1 -->
+          <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-accent-line"></div>
+            <div class="stat-number-wrap">
+              <span class="stat-value">500</span>
+              <span class="stat-symbol">+</span>
+            </div>
+            <span class="stat-label">HEROES</span>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-accent-line"></div>
+            <div class="stat-number-wrap">
+              <span class="stat-value">10</span>
+              <span class="stat-symbol">+</span>
+            </div>
+            <span class="stat-label">CHALLENGES</span>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-accent-line"></div>
+            <div class="stat-number-wrap">
+              <span class="stat-value">01</span>
+            </div>
+            <span class="stat-label">MISSION</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         EVENT HIGHLIGHTS SECTION — CHOOSE YOUR MISSION
+         ========================================================================== -->
+    <section class="highlights-section" id="tracks">
+      <div class="highlights-container">
+        
+        <!-- Section Header -->
+        <div class="highlights-header reveal">
+          <div class="highlights-eyebrow">
+            <span class="highlights-accent-bar"></span>
+            <span class="highlights-caption">EVENT HIGHLIGHTS</span>
+          </div>
+          <h2 class="highlights-title">CHOOSE YOUR MISSION</h2>
+        </div>
+
+        <!-- 4 Highlights Cards Grid -->
+        <div class="highlights-grid">
+          
+          <!-- Card 01: Code Challenge -->
+          <div class="mission-card reveal reveal-delay-1">
+            <div class="card-top-bar">
+              <span class="card-num">01</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <!-- Terminal / Code Brackets Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="16 18 22 12 16 6"></polyline>
+                  <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">CODE CHALLENGE</h3>
+              <p class="card-desc">Test your problem-solving abilities.</p>
+            </div>
+            <div class="card-footer">
+              <div class="card-action">
+                <span class="action-text">EXPLORE</span>
+                <span class="action-arrow">&rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 02: Hackathon -->
+          <div class="mission-card reveal reveal-delay-2">
+            <div class="card-top-bar">
+              <span class="card-num">02</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <!-- Lightning / Core Power Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">HACKATHON</h3>
+              <p class="card-desc">Build something extraordinary.</p>
+            </div>
+            <div class="card-footer">
+              <div class="card-action">
+                <span class="action-text">EXPLORE</span>
+                <span class="action-arrow">&rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 03: Tech Talks -->
+          <div class="mission-card reveal reveal-delay-3">
+            <div class="card-top-bar">
+              <span class="card-num">03</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <!-- Broadcast / Keynote Presentation Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"></path>
+                  <path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"></path>
+                  <circle cx="12" cy="12" r="2"></circle>
+                  <path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"></path>
+                  <path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">TECH TALKS</h3>
+              <p class="card-desc">Learn from industry experts.</p>
+            </div>
+            <div class="card-footer">
+              <div class="card-action">
+                <span class="action-text">EXPLORE</span>
+                <span class="action-arrow">&rarr;</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 04: Network -->
+          <div class="mission-card reveal reveal-delay-4">
+            <div class="card-top-bar">
+              <span class="card-num">04</span>
+              <div class="card-icon-wrap" aria-hidden="true">
+                <!-- Network / Assembly Nodes Icon -->
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">NETWORK</h3>
+              <p class="card-desc">Meet the next generation of builders.</p>
+            </div>
+            <div class="card-footer">
+              <div class="card-action">
+                <span class="action-text">EXPLORE</span>
+                <span class="action-arrow">&rarr;</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         TIMELINE SECTION — MISSION BRIEFING
+         ========================================================================== -->
+    <section class="timeline-section" id="timeline">
+      <div class="timeline-container">
+        
+        <!-- Section Header -->
+        <div class="timeline-header reveal">
+          <div class="timeline-eyebrow">
+            <span class="timeline-accent-bar"></span>
+            <span class="timeline-caption">SCHEDULE OF OPERATIONS</span>
+          </div>
+          <h2 class="timeline-title">MISSION BRIEFING</h2>
+        </div>
+
+        <!-- Vertical Timeline Spine & Events -->
+        <div class="timeline-wrapper">
+          <!-- Central Glowing Timeline Line -->
+          <div class="timeline-spine" aria-hidden="true"></div>
+
+          <!-- Event 01: 10:00 AM -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node" aria-hidden="true">
+              <span class="node-beacon"></span>
+              <span class="node-core"></span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-time">10:00 AM</span>
+                <span class="timeline-phase">PHASE 01</span>
+              </div>
+              <h3 class="timeline-event-title">OPENING CEREMONY</h3>
+              <p class="timeline-event-desc">
+                Assembly convenes at the main stage. Mission objectives, rules of engagement, and challenge protocols revealed.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 02: 11:00 AM -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node" aria-hidden="true">
+              <span class="node-core"></span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-time">11:00 AM</span>
+                <span class="timeline-phase">PHASE 02</span>
+              </div>
+              <h3 class="timeline-event-title">TECH TALK</h3>
+              <p class="timeline-event-desc">
+                Keynote sessions from industry pioneers and elite engineers sharing insights on modern tech architecture.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 03: 01:00 PM -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node" aria-hidden="true">
+              <span class="node-core"></span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-time">01:00 PM</span>
+                <span class="timeline-phase">PHASE 03</span>
+              </div>
+              <h3 class="timeline-event-title">CHALLENGE BEGINS</h3>
+              <p class="timeline-event-desc">
+                The battlefield goes live. Developers dive into high-stakes coding, sprint challenges, and system building.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 04: 04:00 PM -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node" aria-hidden="true">
+              <span class="node-core"></span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-time">04:00 PM</span>
+                <span class="timeline-phase">PHASE 04</span>
+              </div>
+              <h3 class="timeline-event-title">FINAL SHOWCASE</h3>
+              <p class="timeline-event-desc">
+                Code freeze. Teams showcase functional prototypes and pitch innovative solutions to the judging council.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 05: 06:00 PM -->
+          <div class="timeline-item reveal">
+            <div class="timeline-node" aria-hidden="true">
+              <span class="node-core"></span>
+            </div>
+            <div class="timeline-card">
+              <div class="timeline-meta">
+                <span class="timeline-time">06:00 PM</span>
+                <span class="timeline-phase">PHASE 05</span>
+              </div>
+              <h3 class="timeline-event-title">AWARDS &amp; CLOSING</h3>
+              <p class="timeline-event-desc">
+                Victory celebration. Best performing teams receive grand awards, honors, and concluding debrief.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         COUNTDOWN SECTION — THE MISSION BEGINS IN
+         ========================================================================== -->
+    <section class="countdown-section" id="countdown">
+      <!-- Atmospheric Red Radial Glow -->
+      <div class="countdown-atmosphere" aria-hidden="true"></div>
+
+      <div class="countdown-container">
+        
+        <!-- Section Header -->
+        <div class="countdown-header reveal">
+          <div class="countdown-eyebrow">
+            <span class="countdown-accent-bar"></span>
+            <span class="countdown-caption">T-MINUS LAUNCH SEQUENCE</span>
+          </div>
+          <h2 class="countdown-title">THE MISSION BEGINS IN</h2>
+        </div>
+
+        <!-- Live Countdown Cards Grid (DAYS / HOURS / MINUTES / SECONDS) -->
+        <div class="countdown-grid" id="countdownGrid">
+          
+          <!-- Days Box -->
+          <div class="countdown-card reveal reveal-delay-1">
+            <div class="countdown-card-border"></div>
+            <span class="countdown-digit" id="days">00</span>
+            <span class="countdown-label">DAYS</span>
+          </div>
+
+          <!-- Hours Box -->
+          <div class="countdown-card reveal reveal-delay-2">
+            <div class="countdown-card-border"></div>
+            <span class="countdown-digit" id="hours">00</span>
+            <span class="countdown-label">HOURS</span>
+          </div>
+
+          <!-- Minutes Box -->
+          <div class="countdown-card reveal reveal-delay-3">
+            <div class="countdown-card-border"></div>
+            <span class="countdown-digit" id="minutes">00</span>
+            <span class="countdown-label">MINUTES</span>
+          </div>
+
+          <!-- Seconds Box -->
+          <div class="countdown-card reveal reveal-delay-4">
+            <div class="countdown-card-border"></div>
+            <span class="countdown-digit countdown-digit-accent" id="seconds">00</span>
+            <span class="countdown-label">SECONDS</span>
+          </div>
+
+        </div>
+
+        <!-- Reached Zero Display: "MISSION STARTED" -->
+        <div class="mission-started-message" id="missionStartedMessage">
+          <div class="started-badge">
+            <span class="started-pulse-dot"></span>
+            <span>SYSTEM LIVE</span>
+          </div>
+          <h3 class="started-title">MISSION STARTED</h3>
+          <p class="started-desc">
+            The Code Assembly is now underway. Heroes have assembled and protocols are active.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         REGISTRATION CTA SECTION — READY TO ASSEMBLE?
+         ========================================================================== -->
+    <section class="cta-section" id="register">
+      <!-- Atmospheric Red Glowing Core behind the Heading -->
+      <div class="cta-atmosphere-glow" aria-hidden="true"></div>
+
+      <!-- Subtle Cybernetic Grid Pattern Texture Overlay -->
+      <div class="cta-grid-pattern" aria-hidden="true"></div>
+
+      <div class="cta-container reveal">
+        
+        <!-- Eyebrow / Mission Call -->
+        <div class="cta-eyebrow">
+          <span class="cta-accent-dot"></span>
+          <span class="cta-caption">OPERATION PROTOCOL ACTIVE</span>
+        </div>
+
+        <!-- Huge Main Heading with Red Aura -->
+        <h2 class="cta-title">READY TO ASSEMBLE?</h2>
+
+        <!-- Subheading -->
+        <p class="cta-subtitle">"Your mission starts here."</p>
+
+        <!-- Main Action Button -->
+        <div class="cta-action-wrap">
+          <!-- 
+            ==================================================================
+            REGISTRATION URL:
+            Replace the '#' in href="#" below with your actual form link:
+            Example: href="https://forms.google.com/..."
+            ==================================================================
+          -->
+          <a href="#" class="cta-btn">
+            <span class="cta-btn-text">JOIN THE ASSEMBLY</span>
+            <span class="cta-btn-icon">&rarr;</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       SITE FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <!-- Top Row: Brand Info, Navigation, Social Links -->
+      <div class="footer-top">
+        
+        <!-- Left: Chapter Branding -->
+        <div class="footer-brand">
+          <div class="footer-brand-title">
+            <span class="footer-brand-badge"></span>
+            <span class="footer-brand-heading">GEEKSFORGEEKS</span>
+          </div>
+          <p class="footer-brand-sub">STUDENT CHAPTER</p>
+          <p class="footer-brand-sub">BENNETT UNIVERSITY</p>
+        </div>
+
+        <!-- Center: Quick Navigation -->
+        <div class="footer-nav-col">
+          <span class="footer-col-title">NAVIGATION</span>
+          <ul class="footer-nav-links">
+            <li><a href="#home" class="footer-link">Home</a></li>
+            <li><a href="#mission" class="footer-link">Mission</a></li>
+            <li><a href="#timeline" class="footer-link">Timeline</a></li>
+            <li><a href="#register" class="footer-link">Register</a></li>
+          </ul>
+        </div>
+
+        <!-- Right: Social Links -->
+        <div class="footer-social-col">
+          <span class="footer-col-title">SOCIALS</span>
+          <ul class="footer-social-links">
+            <li>
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+                Instagram &rarr;
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+                LinkedIn &rarr;
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="footer-link">
+                GitHub &rarr;
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Thin Border Separator -->
+      <div class="footer-divider"></div>
+
+      <!-- Bottom Row: Copyright & Micro-text -->
+      <div class="footer-bottom">
+        <p class="footer-copyright">
+          &copy; 2026 GeeksForGeeks Student Chapter, Bennett University
+        </p>
+        <span class="footer-tagline">WHERE HEROES WRITE CODE</span>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,2218 @@
+/* ==========================================================================
+   THE CODE ASSEMBLY — VISUAL DESIGN SYSTEM
+   Theme: Marvel-inspired cinematic technology event
+   Tagline: "Where heroes write code."
+   ========================================================================== */
+
+/* --- 1. Font Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* --- 2. Design System Tokens (CSS Variables) --- */
+:root {
+  /* Colors */
+  --color-bg-primary: #050505;       /* Deep cinematic black (main canvas) */
+  --color-bg-surface: #111111;       /* Secondary dark surface for panels/cards */
+  --color-accent-red: #E62429;       /* Signature Marvel red */
+  --color-accent-bright: #FF3B30;    /* High-energy vibrant red for glows/highlights */
+  --color-text-primary: #FFFFFF;     /* Crisp white high-contrast text */
+  --color-text-secondary: #A0A0A0;   /* Muted gray secondary copy */
+  --color-border-subtle: #2A2A2A;    /* Subtle architectural borders */
+
+  /* Typography Families */
+  --font-heading: 'Bebas Neue', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Typography Scale */
+  --font-size-xs: 0.75rem;           /* 12px */
+  --font-size-sm: 0.875rem;          /* 14px */
+  --font-size-base: 1rem;            /* 16px */
+  --font-size-lg: 1.125rem;          /* 18px */
+  --font-size-xl: 1.5rem;            /* 24px */
+  --font-size-2xl: 2.5rem;           /* 40px */
+  --font-size-3xl: 4rem;             /* 64px */
+  --font-size-hero: clamp(3.5rem, 10vw, 8rem); /* Large dramatic hero title */
+
+  /* Letter Spacing */
+  --tracking-normal: 0em;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.15em;
+  --tracking-cinematic: 0.25em;      /* Dramatic spacing for eyebrows and taglines */
+
+  /* Atmospheric Glows & Shadows */
+  --glow-red-ambient: radial-gradient(circle at 50% 0%, rgba(230, 36, 41, 0.18) 0%, rgba(5, 5, 5, 0) 70%);
+  --glow-red-box: 0 0 40px rgba(230, 36, 41, 0.25);
+  --glow-red-text: 0 0 25px rgba(230, 36, 41, 0.45);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-smooth: 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- 3. Base Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* --- 4. Atmospheric Background Layer --- */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--glow-red-ambient);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- 5. Base Typography Styles --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: var(--tracking-wide);
+  color: var(--color-text-primary);
+}
+
+p {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+a {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--color-accent-bright);
+}
+
+/* --- 6. Helper & Utility Classes --- */
+.text-accent {
+  color: var(--color-accent-red);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.border-subtle {
+  border: 1px solid var(--color-border-subtle);
+}
+
+.glow-red {
+  box-shadow: var(--glow-red-box);
+}
+
+.glow-text {
+  text-shadow: var(--glow-red-text);
+}
+
+/* --- 7. Navbar Component --- */
+.navbar-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgba(5, 5, 5, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.navbar {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 1.1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand / Logo (Left) */
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.brand-badge {
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent-red);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-accent-red);
+  display: inline-block;
+}
+
+.nav-brand:hover {
+  color: var(--color-accent-bright);
+}
+
+/* Navigation Links (Center / Right) */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  padding: 0.4rem 0;
+  transition: color var(--transition-smooth);
+}
+
+/* Link Hover Animation: Smooth Red Line underneath */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent-red);
+  transition: width var(--transition-smooth);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--color-text-primary);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ASSEMBLE Button (Right) — Red Outline to Fill Interaction */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.4rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  background-color: transparent;
+  border: 1px solid var(--color-accent-red);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.nav-cta:hover {
+  background-color: var(--color-accent-red);
+  color: #FFFFFF;
+  border-color: var(--color-accent-red);
+  box-shadow: 0 0 20px rgba(230, 36, 41, 0.45);
+  transform: translateY(-1px);
+}
+
+.nav-cta:active {
+  transform: translateY(0);
+}
+
+/* Mobile Hamburger Toggle Button */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26px;
+  height: 18px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+}
+
+/* Transform hamburger into an 'X' when open */
+.nav-toggle.open .hamburger-bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: var(--color-accent-bright);
+}
+
+.nav-toggle.open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.nav-toggle.open .hamburger-bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: var(--color-accent-bright);
+}
+
+/* --- 8. Responsive Mobile Navigation (< 860px) --- */
+@media (max-width: 860px) {
+  .navbar {
+    padding: 1rem 1.25rem;
+  }
+
+  .nav-toggle {
+    display: flex;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
+    background-color: rgba(5, 5, 5, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border-subtle);
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 1.5rem 1.25rem 2rem 1.25rem;
+
+    /* Hidden by default with smooth slide down */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: var(--transition-smooth);
+  }
+
+  .nav-menu.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
+  .nav-link {
+    font-size: 1.05rem;
+    padding: 0.65rem 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(42, 42, 42, 0.4);
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 0.85rem;
+    min-height: 44px;
+  }
+}
+
+/* Compact mobile devices (320px - 380px) */
+@media (max-width: 380px) {
+  .navbar {
+    padding: 0.85rem 1rem;
+  }
+
+  .nav-brand {
+    font-size: 1.15rem;
+    letter-spacing: 0.05em;
+    gap: 0.45rem;
+  }
+
+  .brand-badge {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+/* ==========================================================================
+   HERO SECTION STYLES
+   ========================================================================== */
+
+/* --- 9. Hero Layout & Atmospheric Container --- */
+.hero-section {
+  position: relative;
+  min-height: calc(100vh - 75px); /* Full viewport minus navbar height */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 2rem 5rem 2rem;
+  overflow: hidden;
+  background-color: var(--color-bg-primary);
+}
+
+/* Atmospheric Ambient Glows */
+.hero-atmosphere {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.atmosphere-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.6;
+}
+
+.atmosphere-glow-primary {
+  width: 600px;
+  height: 600px;
+  right: 5%;
+  top: 15%;
+  background: radial-gradient(circle, rgba(230, 36, 41, 0.22) 0%, rgba(230, 36, 41, 0.05) 50%, transparent 70%);
+  animation: atmosphericPulse 8s ease-in-out infinite;
+}
+
+.atmosphere-glow-secondary {
+  width: 450px;
+  height: 450px;
+  left: -5%;
+  bottom: 5%;
+  background: radial-gradient(circle, rgba(230, 36, 41, 0.12) 0%, transparent 65%);
+}
+
+/* Hero Content Grid (Two-Column Layout) */
+.hero-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+/* --- 10. Hero Left Column: Typography --- */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+}
+
+/* Event Eyebrow / Pill */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 1rem;
+  background: rgba(17, 17, 17, 0.7);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: heroFadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  background-color: var(--color-accent-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--color-accent-bright);
+  display: inline-block;
+}
+
+.eyebrow-text {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+/* Main Heading: THE CODE ASSEMBLY */
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  font-size: clamp(2.6rem, 10vw, 7.8rem);
+  line-height: 0.88;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.title-line {
+  display: block;
+}
+
+.title-white {
+  color: var(--color-text-primary);
+  animation: heroFadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both;
+}
+
+.title-red {
+  color: var(--color-accent-red);
+  text-shadow: 0 0 35px rgba(230, 36, 41, 0.45);
+  animation: heroFadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+}
+
+/* Tagline Block */
+.hero-tagline-wrapper {
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--color-accent-red);
+  animation: heroFadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.55s both;
+}
+
+.hero-tagline {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.5vw, 2.1rem);
+  letter-spacing: 0.12em;
+  line-height: 1.15;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+/* Hero CTA Button */
+.hero-action {
+  margin-top: 0.5rem;
+  animation: heroFadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.95rem 2.2rem;
+  background-color: var(--color-accent-red);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-accent-bright);
+  border-radius: 2px;
+  box-shadow: 0 0 25px rgba(230, 36, 41, 0.35);
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+.hero-btn:hover {
+  background-color: var(--color-accent-bright);
+  color: #FFFFFF;
+  box-shadow: 0 0 45px rgba(255, 59, 48, 0.65);
+  transform: translateY(-2px);
+}
+
+.hero-btn:hover .btn-arrow {
+  transform: translateX(6px);
+}
+
+.btn-arrow {
+  display: inline-block;
+  transition: transform var(--transition-smooth);
+}
+
+/* --- 11. Hero Right Column: Superhero Silhouette & Halo --- */
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 480px;
+}
+
+/* Glowing Halo behind Character */
+.hero-glow-halo {
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 36, 41, 0.28) 0%, rgba(230, 36, 41, 0.05) 55%, transparent 70%);
+  filter: blur(35px);
+  z-index: 1;
+  pointer-events: none;
+  animation: atmosphericPulse 6s ease-in-out infinite;
+}
+
+/* Image Wrapper with subtle floating movement */
+.hero-image-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  justify-content: center;
+  animation: heroFloat 6s ease-in-out infinite;
+}
+
+.hero-character-img {
+  width: 100%;
+  height: auto;
+  max-height: 68vh;
+  object-fit: contain;
+  filter: drop-shadow(0 0 25px rgba(230, 36, 41, 0.35));
+}
+
+/* Gradient overlay at bottom to smoothly blend silhouette into background */
+.hero-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background: linear-gradient(to top, var(--color-bg-primary) 20%, transparent 100%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* --- 12. Bottom Scroll Indicator --- */
+.hero-scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  z-index: 10;
+  animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s both;
+}
+
+.scroll-text {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-smooth);
+}
+
+.scroll-track {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.scroll-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: var(--color-accent-bright);
+  box-shadow: 0 0 8px var(--color-accent-bright);
+  animation: scrollTrackSlide 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.hero-scroll:hover .scroll-text {
+  color: var(--color-accent-bright);
+}
+
+/* --- 13. Pure CSS Keyframe Animations --- */
+
+/* Hero Text Fade & Slide Up on load */
+@keyframes heroFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subtle Hero Floating Motion */
+@keyframes heroFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* Atmospheric Glow Pulse */
+@keyframes atmosphericPulse {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+/* Scroll Indicator Bar Sliding */
+@keyframes scrollTrackSlide {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+/* --- 14. Responsive Layout: Mobile & Tablet (< 900px) --- */
+@media (max-width: 900px) {
+  .hero-section {
+    min-height: auto;
+    padding: 3rem 1.25rem 5rem 1.25rem;
+  }
+
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+  }
+
+  /* Content on top */
+  .hero-content {
+    align-items: flex-start;
+    text-align: left;
+    gap: 1.4rem;
+  }
+
+  /* Superhero visual below content on mobile */
+  .hero-visual {
+    min-height: 320px;
+  }
+
+  .hero-character-img {
+    max-height: 46vh;
+  }
+
+  .hero-glow-halo {
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero-eyebrow {
+    flex-wrap: wrap;
+    padding: 0.4rem 0.8rem;
+    max-width: 100%;
+    line-height: 1.4;
+  }
+
+  .eyebrow-text {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    word-break: break-word;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 380px;
+    justify-content: center;
+    text-align: center;
+    min-height: 48px;
+  }
+
+  .hero-scroll {
+    bottom: 1rem;
+  }
+}
+
+/* Hero fine-tuning for compact mobile (< 480px) */
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 2.2rem 1rem 4.5rem 1rem;
+  }
+
+  .hero-visual {
+    min-height: 260px;
+  }
+
+  .hero-character-img {
+    max-height: 38vh;
+  }
+
+  .hero-tagline {
+    font-size: 1.35rem;
+  }
+
+  .hero-btn {
+    font-size: 1.2rem;
+    padding: 0.85rem 1.2rem;
+  }
+}
+
+/* ==========================================================================
+   MISSION SECTION STYLES
+   ========================================================================== */
+
+/* --- 15. Mission Layout & Editorial Composition --- */
+.mission-section {
+  position: relative;
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding: 7rem 2rem;
+  overflow: hidden;
+}
+
+.mission-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Editorial Grid: Title Column (Left) & Narrative Column (Right) */
+.mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  align-items: start;
+  gap: 4rem;
+}
+
+/* Eyebrow & Main Title */
+.mission-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.eyebrow-accent-bar {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-accent-red);
+}
+
+.eyebrow-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-accent-bright);
+  text-transform: uppercase;
+}
+
+.mission-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+/* Narrative Text Column */
+.mission-body-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mission-lead {
+  font-family: var(--font-body);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  font-weight: 500;
+  line-height: 1.5;
+  color: #FFFFFF;
+}
+
+.mission-paragraph {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+}
+
+/* Red Accent Divider Line */
+.mission-accent-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg, 
+    var(--color-accent-red) 0%, 
+    rgba(230, 36, 41, 0.4) 35%, 
+    var(--color-border-subtle) 100%
+  );
+  margin: 4.5rem 0 3.5rem 0;
+}
+
+/* --- 16. Mission Key Statistics --- */
+.mission-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.stat-card {
+  position: relative;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 2.8rem 2.2rem;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+/* Red Accent Top Border on each Card */
+.stat-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent-red), transparent 70%);
+  transition: var(--transition-smooth);
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(230, 36, 41, 0.45);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(230, 36, 41, 0.15);
+}
+
+.stat-card:hover .stat-accent-line {
+  background: linear-gradient(90deg, var(--color-accent-bright), var(--color-accent-red));
+}
+
+.stat-number-wrap {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+}
+
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: clamp(3.4rem, 5.5vw, 5.2rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+}
+
+.stat-symbol {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+  color: var(--color-accent-red);
+  margin-left: 0.25rem;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+/* --- 17. Reusable Scroll Reveal Utility Class --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Reusable Stagger Delay Utility Classes */
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Ensure card hover states work smoothly after being revealed */
+.stat-card.reveal.visible:hover {
+  transform: translateY(-4px);
+}
+
+.mission-card.reveal.visible:hover {
+  transform: translateY(-8px);
+}
+
+.countdown-card.reveal.visible:hover {
+  transform: translateY(-5px);
+}
+
+/* --- 18. Mission Responsive: Tablet & Mobile (< 850px) --- */
+@media (max-width: 850px) {
+  .mission-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .mission-accent-divider {
+    margin: 3rem 0 2.5rem 0;
+  }
+
+  .mission-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .stat-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* Mission fine-tuning for compact mobile (< 420px) */
+@media (max-width: 420px) {
+  .mission-section {
+    padding: 3.8rem 1rem;
+  }
+
+  .mission-heading {
+    font-size: clamp(2.3rem, 9vw, 3rem);
+  }
+
+  .stat-card {
+    padding: 1.6rem 1.15rem;
+  }
+
+  .stat-value {
+    font-size: 3.2rem;
+  }
+}
+
+/* ==========================================================================
+   EVENT HIGHLIGHTS SECTION — CHOOSE YOUR MISSION
+   ========================================================================== */
+
+/* --- 19. Highlights Layout --- */
+.highlights-section {
+  position: relative;
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding: 7rem 2rem;
+  overflow: hidden;
+}
+
+.highlights-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Header */
+.highlights-header {
+  margin-bottom: 3.5rem;
+}
+
+.highlights-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.highlights-accent-bar {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-accent-red);
+}
+
+.highlights-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-accent-bright);
+  text-transform: uppercase;
+}
+
+.highlights-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+/* Four Cards Grid */
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+/* Individual Mission Card */
+.mission-card {
+  position: relative;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 2.4rem 1.8rem 2rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 330px;
+  overflow: hidden;
+  transition: transform var(--transition-smooth), 
+              border-color var(--transition-smooth), 
+              box-shadow var(--transition-smooth),
+              background-color var(--transition-smooth);
+}
+
+/* Pure CSS Card Hover Interactions (No JS used) */
+.mission-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-accent-red);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 30px rgba(230, 36, 41, 0.22);
+  background-color: #141416;
+}
+
+/* Top bar with large number & visual icon */
+.card-top-bar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.card-num {
+  font-family: var(--font-heading);
+  font-size: 3.2rem;
+  line-height: 0.85;
+  color: rgba(255, 255, 255, 0.25);
+  letter-spacing: 0.04em;
+  transition: color var(--transition-smooth);
+}
+
+.mission-card:hover .card-num {
+  color: var(--color-accent-bright);
+}
+
+.card-icon-wrap {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 3px;
+  color: var(--color-text-primary);
+  transition: border-color var(--transition-smooth),
+              background-color var(--transition-smooth),
+              color var(--transition-smooth),
+              box-shadow var(--transition-smooth);
+}
+
+.mission-card:hover .card-icon-wrap {
+  border-color: var(--color-accent-red);
+  background: rgba(230, 36, 41, 0.12);
+  color: var(--color-accent-bright);
+  box-shadow: 0 0 16px rgba(230, 36, 41, 0.3);
+}
+
+/* Card Body */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.card-title {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  letter-spacing: 0.05em;
+  line-height: 1.05;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+.card-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* Card Footer: EXPLORE & Arrow Transition */
+.card-footer {
+  margin-top: 2.2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(42, 42, 42, 0.5);
+  transition: border-color var(--transition-smooth);
+}
+
+.mission-card:hover .card-footer {
+  border-color: rgba(230, 36, 41, 0.3);
+}
+
+.card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  opacity: 0.45;
+  transform: translateX(0);
+  transition: opacity var(--transition-smooth), 
+              transform var(--transition-smooth), 
+              color var(--transition-smooth);
+}
+
+.action-arrow {
+  display: inline-block;
+  transition: transform var(--transition-smooth);
+}
+
+/* On hover, EXPLORE text and arrow become prominent & shift */
+.mission-card:hover .card-action {
+  opacity: 1;
+  color: var(--color-accent-bright);
+  transform: translateX(4px);
+}
+
+.mission-card:hover .action-arrow {
+  transform: translateX(4px);
+}
+
+/* --- 20. Highlights Responsive Layout --- */
+@media (max-width: 1080px) {
+  .highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .highlights-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .highlights-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .mission-card {
+    min-height: auto;
+    padding: 2rem 1.5rem;
+  }
+}
+
+/* ==========================================================================
+   TIMELINE SECTION — MISSION BRIEFING
+   ========================================================================== */
+
+/* --- 21. Timeline Layout & Header --- */
+.timeline-section {
+  position: relative;
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding: 7rem 2rem;
+  overflow: hidden;
+}
+
+.timeline-container {
+  max-width: 1050px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 5.5rem;
+}
+
+.timeline-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.timeline-accent-bar {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-accent-red);
+}
+
+.timeline-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-accent-bright);
+  text-transform: uppercase;
+}
+
+.timeline-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+/* --- 22. Timeline Wrapper & Central Spine (Desktop) --- */
+.timeline-wrapper {
+  position: relative;
+  padding: 1.5rem 0;
+}
+
+/* Glowing Central Vertical Spine */
+.timeline-spine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    180deg, 
+    var(--color-accent-bright) 0%, 
+    var(--color-accent-red) 35%, 
+    rgba(230, 36, 41, 0.4) 75%, 
+    transparent 100%
+  );
+  box-shadow: 0 0 10px rgba(230, 36, 41, 0.45);
+}
+
+/* Timeline Item (Alternating Rows) */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  margin-bottom: 4rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Odd items on Left */
+.timeline-item:nth-child(odd) {
+  left: 0;
+  padding-right: 3.5rem;
+  text-align: right;
+}
+
+.timeline-item:nth-child(odd) .timeline-meta {
+  justify-content: flex-end;
+}
+
+/* Even items on Right */
+.timeline-item:nth-child(even) {
+  left: 50%;
+  padding-left: 3.5rem;
+  text-align: left;
+}
+
+.timeline-item:nth-child(even) .timeline-meta {
+  justify-content: flex-start;
+}
+
+/* Glowing Indicator Nodes on Central Line */
+.timeline-node {
+  position: absolute;
+  top: 1.8rem;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: var(--color-bg-primary);
+  border: 2px solid var(--color-accent-red);
+  box-shadow: 0 0 14px rgba(230, 36, 41, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth);
+}
+
+.timeline-item:nth-child(odd) .timeline-node {
+  right: -11px;
+}
+
+.timeline-item:nth-child(even) .timeline-node {
+  left: -11px;
+}
+
+.node-core {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent-bright);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-accent-bright);
+}
+
+/* Active Beacon Ring Animation for Primary Events */
+.node-beacon {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-accent-bright);
+  animation: beaconPulse 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes beaconPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+/* Timeline Card */
+.timeline-card {
+  position: relative;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 2rem 2.2rem;
+  transition: transform var(--transition-smooth), 
+              border-color var(--transition-smooth), 
+              box-shadow var(--transition-smooth);
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent-red);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(230, 36, 41, 0.2);
+}
+
+.timeline-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-time {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  color: var(--color-accent-bright);
+  line-height: 1;
+}
+
+.timeline-phase {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.04);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeline-event-title {
+  font-family: var(--font-heading);
+  font-size: 1.95rem;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.timeline-event-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* --- 23. Mobile Single-Column Timeline (< 768px) --- */
+@media (max-width: 768px) {
+  .timeline-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .timeline-header {
+    text-align: left;
+    margin-bottom: 3.5rem;
+  }
+
+  .timeline-eyebrow {
+    justify-content: flex-start;
+  }
+
+  /* Shift line to the left edge */
+  .timeline-spine {
+    left: 14px;
+    transform: none;
+  }
+
+  /* Reset all items to full-width and left-aligned */
+  .timeline-item {
+    width: 100% !important;
+    left: 0 !important;
+    padding-left: 48px !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+    margin-bottom: 2.5rem;
+  }
+
+  .timeline-item .timeline-meta {
+    justify-content: flex-start !important;
+  }
+
+  /* Node aligned on the left vertical line */
+  .timeline-node {
+    left: 3px !important;
+    right: auto !important;
+    top: 1.6rem;
+  }
+
+  .timeline-card {
+    padding: 1.6rem 1.3rem;
+  }
+
+  .timeline-time {
+    font-size: 1.4rem;
+  }
+
+  .timeline-event-title {
+    font-size: 1.7rem;
+  }
+}
+
+/* ==========================================================================
+   COUNTDOWN SECTION — THE MISSION BEGINS IN
+   ========================================================================== */
+
+/* --- 24. Countdown Layout & Atmospheric Backdrop --- */
+.countdown-section {
+  position: relative;
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding: 8rem 2rem;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* Atmospheric Red Radial Glow behind the clock */
+.countdown-atmosphere {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  height: 650px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230, 36, 41, 0.16) 0%, rgba(230, 36, 41, 0.03) 55%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.countdown-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1050px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Section Header */
+.countdown-header {
+  margin-bottom: 4rem;
+}
+
+.countdown-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.9rem;
+}
+
+.countdown-accent-bar {
+  display: inline-block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-accent-red);
+}
+
+.countdown-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-accent-bright);
+  text-transform: uppercase;
+}
+
+.countdown-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+}
+
+/* --- 25. Countdown Cards Grid --- */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.75rem;
+}
+
+/* Individual Unit Card */
+.countdown-card {
+  position: relative;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 2px;
+  padding: 3rem 1.5rem 2.2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-smooth), 
+              border-color var(--transition-smooth), 
+              box-shadow var(--transition-smooth);
+  overflow: hidden;
+}
+
+/* Red Accent Top Border on each Card */
+.countdown-card-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent-red), transparent 85%);
+  transition: background var(--transition-smooth);
+}
+
+.countdown-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(230, 36, 41, 0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.65), 0 0 25px rgba(230, 36, 41, 0.15);
+}
+
+.countdown-card:hover .countdown-card-border {
+  background: linear-gradient(90deg, var(--color-accent-bright), var(--color-accent-red));
+}
+
+/* Large Cinematic Digits */
+.countdown-digit {
+  font-family: var(--font-heading);
+  font-size: clamp(3.8rem, 6.5vw, 6.5rem);
+  line-height: 0.85;
+  letter-spacing: 0.02em;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.8rem;
+}
+
+/* Seconds High-Energy Glow Accent */
+.countdown-digit-accent {
+  color: var(--color-accent-bright);
+  text-shadow: 0 0 25px rgba(255, 59, 48, 0.45);
+}
+
+/* Unit Labels (DAYS, HOURS, MINUTES, SECONDS) */
+.countdown-label {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+/* --- 26. Zero State: "MISSION STARTED" Display --- */
+.mission-started-message {
+  display: none;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-accent-red);
+  padding: 4rem 2rem;
+  border-radius: 2px;
+  box-shadow: 0 0 40px rgba(230, 36, 41, 0.35);
+  text-align: center;
+  animation: heroFadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.mission-started-message.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.started-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1rem;
+  background: rgba(230, 36, 41, 0.15);
+  border: 1px solid var(--color-accent-red);
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--color-accent-bright);
+  text-transform: uppercase;
+}
+
+.started-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent-bright);
+  box-shadow: 0 0 10px var(--color-accent-bright);
+  animation: atmosphericPulse 1.5s infinite;
+}
+
+.started-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.9;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-bright);
+  text-shadow: 0 0 35px rgba(230, 36, 41, 0.6);
+  text-transform: uppercase;
+}
+
+.started-desc {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* --- 27. Countdown Responsive Layout --- */
+@media (max-width: 768px) {
+  .countdown-section {
+    padding: 5rem 1.25rem;
+  }
+
+  .countdown-header {
+    margin-bottom: 2.5rem;
+  }
+
+  /* 2x2 grid on mobile for optimal digit visibility without cramped wrapping */
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .countdown-card {
+    padding: 2.2rem 1rem 1.6rem 1rem;
+  }
+
+  .countdown-digit {
+    font-size: 3.4rem;
+  }
+
+  .countdown-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+/* ==========================================================================
+   REGISTRATION CTA SECTION — READY TO ASSEMBLE?
+   ========================================================================== */
+
+/* --- 28. CTA Section Layout & Atmosphere --- */
+.cta-section {
+  position: relative;
+  background-color: var(--color-bg-primary);
+  border-top: 1px solid var(--color-border-subtle);
+  padding: 11rem 2rem 12rem 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Atmospheric Red Glowing Orb behind the Heading */
+.cta-atmosphere-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 750px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(230, 36, 41, 0.28) 0%, rgba(230, 36, 41, 0.06) 50%, transparent 70%);
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 1;
+  animation: atmosphericPulse 7s ease-in-out infinite;
+}
+
+/* Subtle Cybernetic Grid Pattern Overlay */
+.cta-grid-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 1;
+  mask-image: radial-gradient(ellipse at center, black 35%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 35%, transparent 75%);
+}
+
+.cta-container {
+  position: relative;
+  z-index: 2;
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Eyebrow Pill */
+.cta-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.45rem 1.1rem;
+  background: rgba(17, 17, 17, 0.85);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 30px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: 2.2rem;
+}
+
+.cta-accent-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--color-accent-bright);
+  box-shadow: 0 0 10px var(--color-accent-bright);
+  animation: atmosphericPulse 1.8s infinite;
+}
+
+.cta-caption {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+/* Huge Dramatic Title */
+.cta-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.8rem, 9.5vw, 8.5rem);
+  line-height: 0.88;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 0 45px rgba(230, 36, 41, 0.4);
+}
+
+/* Subheading */
+.cta-subtitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  margin-bottom: 3.5rem;
+}
+
+/* Button & Hover Animation */
+.cta-action-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.15rem 2.8rem;
+  background-color: var(--color-accent-red);
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-accent-bright);
+  border-radius: 2px;
+  box-shadow: 0 0 35px rgba(230, 36, 41, 0.45);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--transition-smooth), 
+              background-color var(--transition-smooth), 
+              box-shadow var(--transition-smooth);
+}
+
+.cta-btn-icon {
+  display: inline-block;
+  transition: transform var(--transition-smooth);
+}
+
+/* Hover Interaction */
+.cta-btn:hover {
+  background-color: var(--color-accent-bright);
+  color: #FFFFFF;
+  box-shadow: 0 0 60px rgba(255, 59, 48, 0.8), 0 10px 30px rgba(0, 0, 0, 0.8);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.cta-btn:hover .cta-btn-icon {
+  transform: translateX(8px);
+}
+
+.cta-btn:active {
+  transform: translateY(0) scale(1);
+}
+
+/* --- 29. CTA Responsive Layout --- */
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 7rem 1.25rem 8rem 1.25rem;
+  }
+
+  .cta-atmosphere-glow {
+    width: 380px;
+    height: 300px;
+  }
+
+  .cta-subtitle {
+    margin-bottom: 2.8rem;
+  }
+
+  .cta-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    font-size: 1.35rem;
+  }
+}
+
+/* ==========================================================================
+   FOOTER COMPONENT STYLES
+   ========================================================================== */
+
+/* --- 30. Footer Layout & Styling --- */
+.site-footer {
+  position: relative;
+  background-color: #070709;
+  border-top: 1px solid var(--color-border-subtle);
+  padding: 5.5rem 2rem 3rem 2rem;
+  color: var(--color-text-secondary);
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Chapter Branding */
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-brand-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.4rem;
+}
+
+.footer-brand-badge {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-accent-red);
+  box-shadow: 0 0 10px var(--color-accent-red);
+}
+
+.footer-brand-heading {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.footer-brand-sub {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: var(--color-text-secondary);
+  line-height: 1.25;
+}
+
+/* Column Titles */
+.footer-col-title {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: 1.3rem;
+}
+
+/* Navigation & Social Links */
+.footer-nav-links,
+.footer-social-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-link {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-smooth), transform var(--transition-smooth);
+  display: inline-block;
+}
+
+/* Red Hover States */
+.footer-link:hover {
+  color: var(--color-accent-bright);
+  transform: translateX(4px);
+}
+
+/* Divider Line */
+.footer-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border-subtle);
+  margin: 4rem 0 2rem 0;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  font-family: var(--font-body);
+  color: rgba(160, 160, 160, 0.7);
+}
+
+.footer-copyright {
+  margin: 0;
+}
+
+.footer-tagline {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+}
+
+/* --- 31. Footer Responsive Layout (< 768px) --- */
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 4.5rem 1.25rem 2.5rem 1.25rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-divider {
+    margin: 3rem 0 1.5rem 0;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+}
+
+/* --- 32. Final Responsive Fit --- */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .mission-section,
+  .highlights-section,
+  .timeline-section,
+  .countdown-section,
+  .site-footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .mission-grid {
+    gap: 2.5rem;
+  }
+
+  .mission-stats-grid {
+    gap: 1.25rem;
+  }
+
+  .stat-card {
+    padding: 2.2rem 1.5rem;
+  }
+
+  .footer-top {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 900px) {
+  .countdown-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .highlights-title,
+  .timeline-title,
+  .countdown-title {
+    font-size: clamp(2.35rem, 9vw, 2.8rem);
+  }
+
+  .cta-section {
+    padding: 5.5rem 1rem 6rem;
+  }
+
+  .cta-title {
+    font-size: clamp(2.5rem, 10vw, 3.6rem);
+    overflow-wrap: anywhere;
+  }
+
+  .cta-btn {
+    font-size: 1.15rem;
+    gap: 0.65rem;
+  }
+}
+
+
+
+
+
+
+
+
